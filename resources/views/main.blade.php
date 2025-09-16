@@ -2,13 +2,17 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Message</title>
-    @vite('resources/css/app.css')
-
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         (function () {
-            const savedTheme = localStorage.getItem('theme');
-            document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
         })();
     </script>
 </head>
@@ -16,7 +20,7 @@
 
 @php
     // This URL can be passed from the controller or Blade data
-    $newTabUrl = route('preview.random', ['id' => uniqid()]);
+    $newTabUrl =route('ads.random', ['id' => uniqid()]);
 @endphp
 
 <!-- Header -->
@@ -63,7 +67,7 @@
                 Limit <span class="text-sm text-gray-500 dark:text-gray-400">(how many people can open this, default: 1)</span>
             </label>
             <input type="number" id="limit" name="limit" value="1" min="1"
-                   class="w-24 p-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-orange-500 transition"
+                   class="w-24 px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-orange-500"
                    required>
 
             <div class="text-sm text-gray-500 dark:text-gray-400 font-semibold">
@@ -93,6 +97,7 @@
         const moonText = '🌙';
         const isDark = document.documentElement.classList.contains('dark');
         themeBtn.textContent = isDark ? sunText : moonText;
+
 
         themeBtn.addEventListener('click', () => {
             const darkNow = document.documentElement.classList.toggle('dark');
