@@ -53,7 +53,7 @@
               class="bg-white dark:bg-gray-800 mt-4 p-6 rounded-xl shadow-md space-y-6 w-full max-w-xl">
 
             @csrf
-
+            @method('POST')
             <label for="message" class="block font-semibold text-gray-700 dark:text-gray-200 mb-1">
                 Message <span class="text-sm text-gray-500 dark:text-gray-400">(max 150 characters)</span>
             </label>
