@@ -18,10 +18,12 @@ class MessageController extends Controller
         $data = $request->validate([
             'message' => 'required|string|max:150',
             'limit'   => 'nullable|integer|min:1',
+            'expire'  => 'nullable|integer|min:1',
         ]);
 
         $limit = $data['limit'] ?? 1;
-        $expiresAt = Carbon::now()->addDay()->timestamp; // +1 day
+        $expiresAt = Carbon::now()->addDays($data['expire']??1)->timestamp; // +1 day
+
 
         // generate secure token, check uniqueness
         do {

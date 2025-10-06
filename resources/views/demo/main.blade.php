@@ -18,12 +18,6 @@
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
 
-@php
-    // This URL can be passed from the controller or Blade data
-    $newTabUrl = "as"; 
-    //route('ads.random', ['id' => uniqid()]);
-@endphp
-
 <!-- Header -->
 <header class="bg-white dark:bg-gray-800 shadow px-4 py-3 flex items-center justify-between">
     <div class="flex items-center space-x-2">
@@ -75,7 +69,7 @@
                 ⏳ 1 day expiration
             </div>
 
-            <button type="submit"  onclick="window.open('{{ $newTabUrl }}', '_blank');"
+            <button type="submit"
                     class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-md transition">
                 CREATE
             </button>
