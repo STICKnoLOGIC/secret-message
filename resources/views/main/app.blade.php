@@ -2,6 +2,9 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Secret Message')</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -75,6 +78,8 @@
         });
     });
 </script>
+
+@yield('body-script')
 
 </body>
 </html>

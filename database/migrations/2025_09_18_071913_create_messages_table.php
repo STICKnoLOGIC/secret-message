@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('token', 64)->unique();
             $table->string('message', 150);
-            $table->unsignedInteger('limit')->default(1);
+            $table->unsignedBigInteger('limit')->default(1);
             $table->unsignedBigInteger('expires_at');
             $table->timestamps();
             $table->softDeletes();

@@ -7,6 +7,7 @@ use App\Models\MessageView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Validation\ValidationException;
 
 class MessageController extends Controller
 {
@@ -15,11 +16,16 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'message' => 'required|string|max:150',
-            'limit'   => 'nullable|integer|min:1',
-            'expire'  => 'nullable|integer|min:1',
-        ]);
+        try {
+            $data = $request->validate([
+                'message' => 'required|string|max:150',
+                'limit' => 'nullable|max:18446744073709551615|integer|min:1',
+                'expire' => 'nullable|integer|min:1',
+            ]);
+        }catch (ValidationException $exception){
+            return redirect()->back()->withErrors($exception->validator->errors()->all())
+                ->withInput();
+        }
 
         $limit = $data['limit'] ?? 1;
         $expiresAt = Carbon::now()->addDays($data['expire']??1)->timestamp; // +1 day
@@ -36,8 +42,10 @@ class MessageController extends Controller
             'limit'      => $limit,
             'expires_at' => $expiresAt,
         ]);
+//        $encoded = base64_encode(json_encode($message));
+        session(['temp_message' => $message]);
 
-        return redirect()->route('messages.show', ['token' => $token]);
+        return redirect()->route('messages.view',['token'=>$message->token])->with('message',$message);
     }
 
     /**
