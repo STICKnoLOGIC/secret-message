@@ -20,7 +20,7 @@
 
 @php
     // This URL can be passed from the controller or Blade data
-    $newTabUrl = "as"; 
+    $newTabUrl = "as";
     //route('ads.random', ['id' => uniqid()]);
 @endphp
 
