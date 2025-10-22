@@ -1,4 +1,7 @@
 @extends('main.app')
+@php
+    $message =  session('message');
+@endphp
 
 @section('content')
 <div class="container bg-white dark:bg-gray-800 mt-4 p-6 rounded-xl shadow-md space-y-6 w-full max-w-xl">

@@ -10,14 +10,16 @@ Route::get('/m', function (){
     return view('messages.home');
 })->name('messages.home');
 Route::get('/r/{token}', [MessageController::class, 'show'])->name('messages.show');
-Route::get('/view/{token}',function (Request $request){
-    $message =  session('message');
-    return view('messages.view',compact('message'));
+Route::get('/view/{token}',function (){
+    return view('messages.view');
 })->name('messages.view');
 
 
 //demo purpose
 Route::get('/', function () {
     return view('demo.main');
-});
+})->name('demo.main');
 Route::post('/demo', [DemoController::class, 'store'])->name('demo.store');
+Route::get('/demo/{token}', function (){
+     return view('demo.view');
+})->name('demo.view');

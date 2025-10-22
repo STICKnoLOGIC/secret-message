@@ -41,23 +41,31 @@
 <main class="flex-1 w-full flex flex-col md:flex-row md:items-start">
 
     <!-- Top Ad on mobile / Left Ad on desktop -->
-    <div class="p-4 w-full md:w-[20%] order-1 md:order-1">
-        <div class="bg-gray-200 dark:bg-gray-700 text-center text-gray-700 dark:text-gray-200 p-3 rounded-lg shadow-inner">
-            @yield('left-side', '<span class="text-sm">🪧 Ad #1 (Top on Mobile / Left on Desktop)</span>')
-        </div>
+    <div class="p-4 w-full md:w-[25%] order-1 md:order-1">
+        @hasSection('left-side')
+            @yield('left-side')
+        @else
+            <div class="bg-gray-200 dark:bg-gray-700 text-center text-gray-700 dark:text-gray-200 p-3 rounded-lg shadow-inner">
+                <span class="text-sm">🪧 Ad #1 (Top on Mobile / Left on Desktop)</span>
+            </div>
+        @endif
     </div>
 
 
     <!-- Content -->
-    <div class="w-full md:w-[60%]  px-4 md:px-0 order-2 md:order-2 flex flex-col items-center">
+    <div class="w-full md:w-[50%]  px-4 md:px-0 order-2 md:order-2 flex flex-col items-center">
         @yield('content', 'Error 404')
     </div>
 
     <!-- Bottom Ad on mobile / Right Ad on desktop -->
-    <div class="p-4 w-full md:w-[20%] order-3 md:order-3">
-        <div class="bg-gray-200 dark:bg-gray-700 text-center text-gray-700 dark:text-gray-200 p-3 rounded-lg shadow-inner">
-            @yield('right-side', '<span class="text-sm">🪧 Ad #2 (Bottom on Mobile / Right on Desktop)</span>')
-        </div>
+    <div class="p-4 w-full md:w-[25%] order-3 md:order-3">
+        @hasSection('right-side')
+            @yield('right-side')
+        @else
+            <div class="bg-gray-200 dark:bg-gray-700 text-center text-gray-700 dark:text-gray-200 p-3 rounded-lg shadow-inner">
+                <span class="text-sm">🪧 Ad #2 (Bottom on Mobile / Right on Desktop)</span>
+            </div>
+        @endif
     </div>
 </main>
 

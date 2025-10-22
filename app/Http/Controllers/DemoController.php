@@ -34,7 +34,8 @@ class DemoController extends Controller
             'limit'      => $limit,
             'expires_at' => $expiresAt,
         ];
+//        session(['temp_message' => (object) $message]);
 
-        return redirect()->route('demo.view',['token' => $message['token']])->with('message',$message);
+        return redirect()->route('demo.view',['token' => $message['token']])->with('message',(object) $message);
     }
 }
