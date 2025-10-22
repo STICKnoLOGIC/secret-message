@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 class TextHelper
 {
-    public static function linkify(string $text, string $token, ?string $sponsoredUrl = null): string
+    public static function linkify(string $text, ?string $sponsoredUrl = null): string
     {
         $text = e($text);
 
