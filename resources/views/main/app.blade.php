@@ -18,18 +18,27 @@
             }
         })();
     </script>
+    @yield('head-script')
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
 
 <!-- Header -->
-<header class="bg-white dark:bg-gray-800 shadow px-4 py-3 flex items-center justify-between">
+<header class="sticky top-0 bg-white dark:bg-gray-800 shadow px-4 py-3 flex items-center justify-between">
     <div class="flex items-center space-x-2">
-        @hasSection('logo')
-            @yield('logo')
-        @else
-            <div class="w-8 h-8 rounded-full bg-orange-500"></div>
-        @endif
-        <span class="text-lg font-bold">@yield('logo-text', 'LOGO')</span>
+        <a href="{{ route('demo.main') }}">
+            @hasSection('logo')
+                @yield('logo')
+            @else
+                <div class="w-8 h-8 rounded-full bg-orange-500"></div>
+            @endif
+            <span class="text-lg font-bold">
+            @hasSection('logo-text')
+                @yield('logo-text')
+            @else
+                {{ config('app.name', 'Laravel') }}
+            @endif
+            </span>
+        </a>
     </div>
     <button id="themeToggle"
             class="bg-gray-200 dark:bg-gray-700 p-2 rounded shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition"
@@ -41,7 +50,7 @@
 <main class="flex-1 w-full flex flex-col md:flex-row md:items-start">
 
     <!-- Top Ad on mobile / Left Ad on desktop -->
-    <div class="p-4 w-full md:w-[25%] order-1 md:order-1">
+    <div class="lg:sticky lg:top-12 p-4 w-full md:w-[25%] order-1 md:order-1">
         @hasSection('left-side')
             @yield('left-side')
         @else
@@ -58,7 +67,7 @@
     </div>
 
     <!-- Bottom Ad on mobile / Right Ad on desktop -->
-    <div class="p-4 w-full md:w-[25%] order-3 md:order-3">
+    <div class="lg:sticky lg:top-12 p-4 w-full md:w-[25%] order-3 md:order-3">
         @hasSection('right-side')
             @yield('right-side')
         @else
@@ -68,6 +77,15 @@
         @endif
     </div>
 </main>
+<br>
+<footer class="w-full flex flex-col md:flex-row md:items-start p-4 border-t gap-2 lg:gap-16 border-amber-600 items-center justify-center">
+    <a class="text-orange-500 dark:text-orange-400"
+       href="{{ route('legal.tos') }}">Terms of Services</a>
+    <a class="text-orange-500 dark:text-orange-400"
+       href="{{ route('legal.privacy') }}">Privacy Policy</a>
+    <a class="text-orange-500 dark:text-orange-400"
+       href="{{ route('legal.dmca') }}">DMCA</a>
+</footer>
 
 <!-- Theme Toggle Script -->
 <script>

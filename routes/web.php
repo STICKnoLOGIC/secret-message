@@ -14,6 +14,10 @@ Route::get('/view/{token}',function (){
     return view('messages.view');
 })->name('messages.view');
 
+Route::view('/dmca','legal.dmca')->name('legal.dmca');
+Route::view('/privacy','legal.privacy')->name('legal.privacy');
+Route::view('/terms','legal.tos')->name('legal.tos');
+
 
 //demo purpose
 Route::get('/', function () {
