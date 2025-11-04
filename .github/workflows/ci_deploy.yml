@@ -1,0 +1,78 @@
+name: Deploy Laravel App
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # install rsync
+      - name: Install rsync
+        run: sudo apt-get update && sudo apt-get install rsync
+
+      # Setup PHP
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, bcmath, intl, pdo, pdo_mysql
+          tools: composer
+
+      # Install Composer dependencies (optimized for production)
+      - name: Install Composer dependencies
+        run: composer install --no-dev --optimize-autoloader
+
+      # Build frontend (if applicable)
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build assets
+        run: |
+          npm ci
+          npm run build
+        if: hashFiles('package.json') != ''
+
+      # Prepare deployment package
+      - name: Prepare deployment package
+        run: |
+          rm -rf node_modules
+          rm -rf tests
+          rm -rf .git .github
+          rm -f .env
+
+      # Deploy to VPS
+      - name: Deploy to VPS
+        uses: burnett01/rsync-deployments@7.1.0
+        with:
+          switches: -avzr --delete
+          path: ./
+          remote_path: ${{ secrets.REMOTE_PATH }}
+          remote_host: ${{ secrets.REMOTE_HOST }}
+          remote_port: ${{ secrets.REMOTE_PORT }}
+          remote_user: ${{ secrets.VPS_USER }}
+          remote_key: ${{ secrets.REMOTE_PRIVATE_KEY }}
+          https://github.com/Burnett01/rsync-deployments
+
+
+      # Extract and run migration
+      - name: Run migrations on VPS
+        uses: appleboy/ssh-action
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_KEY }}
+          https://github.com/appleboy/ssh-action
+          script: |
+            cd ${{ secrets.VPS_PATH }}
+            tar xzf laravel_app.tar.gz
+            rm laravel_app.tar.gz
+            php artisan migrate --force
