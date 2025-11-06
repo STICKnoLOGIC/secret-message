@@ -13,6 +13,24 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        //
+    ->withExceptions(function (Exceptions $exceptions){
+        $exceptions->render(function (Throwable $e) {
+            $status = $e->getCode();
+            if (!is_int($status) || $status < 100 || $status >= 600) {
+                $status = 500;
+            }
+
+            $safeMessage = match($status) {
+                404 => 'The Message you are looking for could not be found.',
+                403 => 'You are not authorized to access this page.',
+                419 => 'Your session has expired. Please refresh the page.',
+                500 => 'Something went wrong. Please try again later.',
+            };
+
+            return response()->view('error.any', [
+                'code' => $status,
+                'title' => 'Something went wrong',
+                'message' => $safeMessage ?? $e->getMessage(),
+            ], $status);
+        });
     })->create();
