@@ -4,10 +4,19 @@
 <form id="createForm"
     method="POST"
     action="{{ route('demo.store') }}"
+    onsubmit="
+     const btn = this.querySelector('button');
+     btn.disabled = true;
+    setTimeout(() => {
+            btn.disabled = false;
+            btn.innerText = 'Save';
+        }, 3000);
+    "
     class="bg-white dark:bg-gray-800 mt-4 p-6 rounded-xl shadow-md space-y-6 w-full max-w-xl">
 
     @csrf
     @method('POST')
+    <p class="text-gray-500 dark:text-gray-400"> This is for A Demo purposes, the message will not be stored in our database.</p>
     <label for="message" class="block font-semibold text-gray-700 dark:text-gray-200 mb-1">
         Message <span class="text-sm text-gray-500 dark:text-gray-400">(max 150 characters)</span>
     </label>
