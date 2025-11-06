@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class CleanupExpiredMessages extends Command
 {
+     //use this * * * * * cd /path/to/your/project && php artisan schedule:run >> /dev/null 2>&1
     protected $signature = 'messages:cleanup';
     protected $description = 'Delete messages that expired more than 3 days ago';
 
