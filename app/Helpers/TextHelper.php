@@ -16,12 +16,12 @@ class TextHelper
 
             if ($sponsoredUrl) {
                 // onclick handler: open sponsored in new tab, then go to real URL
-                return '<a href="' . $href . '" target="_self" onclick="window.open(\'' 
-                    . e($sponsoredUrl) . '\', \'_blank\', \'noopener,noreferrer\')">' 
+                return '<a href="' . $href . '" target="_self" class="underline text-amber-600 dark:text-amber-500" onclick="window.open(\''
+                    . e($sponsoredUrl) . '\', \'_blank\', \'noopener,noreferrer\')">'
                     . $url . '</a>';
             } else {
                 // normal behaviour
-                return '<a href="' . $href . '" target="_blank" rel="noopener noreferrer">' 
+                return '<a href="' . $href . '" target="_blank" class="underline text-amber-600 dark:text-amber-500" rel="noopener noreferrer">'
                     . $url . '</a>';
             }
         }, $text);
