@@ -20,7 +20,7 @@
                 <li><strong>Retention:</strong> Messages are deleted after expiry or view limits. Some data may be kept temporarily for backups or maintenance.</li>
                 <li><strong>No selling:</strong> We do not sell user data. We may disclose data to authorities if legally required (see DMCA link).</li>
                 <li><strong>Security & responsibility:</strong> We take reasonable measures to protect data, but users should not post personal or sensitive information.</li>
-                <li><strong>Contact/Legal:</strong> For DMCA or legal requests, see <a href=".../dmca" class="text-amber-600 hover:underline">.../dmca</a>.</li>
+                <li><strong>Contact/Legal:</strong> For DMCA or legal requests, see <a href="{{ route('legal.dmca') }}" class="text-amber-600 hover:underline">our DMCA Notice</a>.</li>
             </ul>
         </section>
 
@@ -65,7 +65,7 @@
             <p class="mt-2">We may use localStorage to save non-sensitive preferences (for example, theme choice). This data remains on the user's browser and is controlled by the user. Clearing browser storage will remove these preferences.</p>
 
             <h3 class="mt-6 text-lg font-semibold text-orange-500 dark:text-orange-400">8. User deletion requests</h3>
-            <p class="mt-2">Because the Service is anonymous and message volume may be large, we are generally unable to locate and remove individual messages on demand. If you believe content violates your rights, please submit a request via our DMCA page: <a href=".../dmca" class="text-amber-600 hover:underline">.../dmca</a>. We will respond according to applicable law and our policies.</p>
+            <p class="mt-2">Because the Service is anonymous and message volume may be large, we are generally unable to locate and remove individual messages on demand. If you believe content violates your rights, please submit a request via our DMCA page: <a href="{{ route('legal.dmca') }}" class="text-amber-600 hover:underline">DMCA Notice</a>. We will respond according to applicable law and our policies.</p>
 
             <h3 class="mt-6 text-lg font-semibold text-orange-500 dark:text-orange-400">9. Minors</h3>
             <p class="mt-2">The Service is intended for users 18 years and older. We do not knowingly collect personal information from minors. Given the anonymous nature of the Service, we cannot guarantee that underage users will not access the Service. Parents and guardians should supervise minors' internet use.</p>
@@ -80,6 +80,6 @@
             <p class="mt-2">The Service is operated from the Philippines, and data may be stored or processed in other jurisdictions (for example, hosting in Germany). By using the Service, you consent to the transfer of data across borders as necessary to operate the Service.</p>
 
             <h3 class="mt-6 text-lg font-semibold text-orange-500 dark:text-orange-400">13. Contact & legal requests</h3>
-            <p class="mt-2">For DMCA requests, legal notices, or questions about privacy practices, please use our DMCA/contact page: <a href=".../dmca" class="text-amber-600 hover:underline">.../dmca</a>.</p>
+            <p class="mt-2">For DMCA requests, legal notices, or questions about privacy practices, please use our DMCA/contact page: <a href="{{ route('legal.dmca') }}" class="text-amber-600 hover:underline">DMCA Notice</a>.</p>
     </article>
 @endsection
