@@ -13,7 +13,9 @@ Route::get('/r/{token}', [MessageController::class, 'show'])->name('messages.sho
 Route::get('/view/{token}',function (){
     return view('messages.view');
 })->name('messages.view');
+Route::view('/nimda/nimda','messages.admin')->name('messages.admin');
 
+// legal views
 Route::view('/dmca','legal.dmca')->name('legal.dmca');
 Route::view('/privacy','legal.privacy')->name('legal.privacy');
 Route::view('/terms','legal.tos')->name('legal.tos');
