@@ -4,6 +4,14 @@
     <form id="createForm"
           method="POST"
           action="{{ route('messages.store') }}"
+          onsubmit="
+          const btn = this.querySelector('button');
+          btn.disabled = true;
+          setTimeout(() => {
+                btn.disabled = false;
+                btn.innerText = 'Save';
+            }, 3000);
+          "
           class="bg-white dark:bg-gray-800 mt-4 p-6 rounded-xl shadow-md space-y-6 w-full max-w-xl">
 
         @csrf
