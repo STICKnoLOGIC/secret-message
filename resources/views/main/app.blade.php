@@ -23,7 +23,7 @@
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
 
 <!-- Header -->
-<header class="sticky top-0 bg-white dark:bg-gray-800 shadow px-4 py-3 flex items-center justify-between">
+<header class="sticky top-0 z-10 bg-white dark:bg-gray-800 shadow px-4 py-3 flex items-center justify-between">
     <div class="flex items-center space-x-2">
         <a href="{{ route('demo.main') }}">
             @hasSection('logo')
