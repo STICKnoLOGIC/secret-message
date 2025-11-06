@@ -20,7 +20,7 @@ class MessageController extends Controller
             $data = $request->validate([
                 'message' => 'required|string|max:150',
                 'limit' => 'nullable|max:18446744073709551615|integer|min:1',
-                'expire' => 'nullable|integer|min:1',
+                'expire' => 'nullable|integer|min:1|max:365',
             ]);
         }catch (ValidationException $exception){
             return redirect()->back()->withErrors($exception->validator->errors()->all())
@@ -28,7 +28,7 @@ class MessageController extends Controller
         }
 
         $limit = $data['limit'] ?? 1;
-        $expiresAt = Carbon::now()->addDays($data['expire']??1)->timestamp; // +1 day
+        $expiresAt = Carbon::now()->addDays((int) $data['expire']??1)->timestamp; // +1 day
 
 
         // generate secure token, check uniqueness
@@ -42,8 +42,6 @@ class MessageController extends Controller
             'limit'      => $limit,
             'expires_at' => $expiresAt,
         ]);
-//        $encoded = base64_encode(json_encode($message));
-        session(['temp_message' => $message]);
 
         return redirect()->route('messages.view',['token'=>$message->token])->with('message',$message);
     }
