@@ -52,11 +52,11 @@ jobs:
       - name: Deploy to VPS
         uses: burnett01/rsync-deployments@7.1.0
         with:
-          switches: -avzr --delete
+          switches: -avzr --delete --exclude='.env' --exclude='storage/'
           path: ./
           remote_path: ${{ secrets.VPS_PATH }} # path to your vps
           remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
           remote_port: ${{ secrets.VPS_PORT }} # the port 
           remote_user: ${{ secrets.VPS_USER }} # the user (recommend to use root)
           remote_key: ${{ secrets.VPS_KEY }} #the private ssh key
-          https://github.com/Burnett01/rsync-deployments
+          # https://github.com/Burnett01/rsync-deployments
