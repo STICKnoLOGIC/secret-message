@@ -16,6 +16,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions){
         $exceptions->render(function (Throwable $e) {
             $status = $e->getCode();
+            if ($e instanceof Symfony\Component\HttpKernel\Exception\HttpException
+            && $e->getStatusCode() === 503) {
+                return response()->view('error.maintenance', [], 503);
+            }
+
             if (!is_int($status) || $status < 100 || $status >= 600) {
                 $status = 500;
             }
