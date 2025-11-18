@@ -49,6 +49,15 @@ jobs:
           rm -f .env README.md
 
       # Deploy to VPS
+      - name: Setting up Environment
+        run: |
+          # create env from secret (token, id, public key)
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh-keyscan -p ${{ secrets.VPS_PORT }} -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
+
       - name: Deploy to VPS
         run: |
            rsync -aAXvhP -e  "ssh -p ${{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}
