@@ -52,7 +52,7 @@ jobs:
       - name: Deploy to VPS
         uses: burnett01/rsync-deployments@7.1.0
         with:
-          switches: -avzr --delete --exclude='.env' --exclude='storage/' -e ssh --rsync-path="echo '${{ secrets.VPS_PW }}' | sudo -S rsync" 
+          switches: -avzr --delete --exclude='.env' --exclude='storage/' -e "ssh -p {{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" --rsync-path="echo '${{ secrets.VPS_PW }}' | sudo -S rsync" 
           path: ./
           remote_path: ${{ secrets.VPS_PATH }} # path to your vps
           remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
