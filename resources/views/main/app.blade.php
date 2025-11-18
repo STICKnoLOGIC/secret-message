@@ -2,6 +2,8 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+    <link rel="alternate icon" href="{{ asset('favicon.png') }}">
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -24,22 +26,19 @@
 
 <!-- Header -->
 <header class="sticky top-0 z-10 bg-white dark:bg-gray-800 shadow px-4 py-3 flex items-center justify-between">
-    <div class="flex items-center space-x-2">
-        <a href="{{ route('demo.main') }}">
+    <a href="{{ route('demo.main') }}">
+        <div class="flex items-center space-x-2">
             @hasSection('logo')
                 @yield('logo')
             @else
-                <div class="w-8 h-8 rounded-full bg-orange-500"></div>
+                <img src="{{ asset('icon-light.svg') }}" class="block dark:hidden h-6" alt="icon light">
+                <img src="{{ asset('icon-dark.svg') }}" class="hidden dark:block h-6" alt="icon dark">
             @endif
             <span class="text-lg font-bold">
-            @hasSection('logo-text')
-                @yield('logo-text')
-            @else
-                {{ config('app.name', 'Laravel') }}
-            @endif
+            @yield('logo-text')
             </span>
-        </a>
-    </div>
+        </div>
+    </a>
     <button id="themeToggle"
             class="bg-gray-200 dark:bg-gray-700 p-2 rounded shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition"
             aria-label="Toggle Theme">
