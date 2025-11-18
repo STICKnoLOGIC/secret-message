@@ -2,8 +2,8 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
-    <link rel="alternate icon" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
+    <link rel="alternate icon" href="{{ asset('images/favicon.png') }}">
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -31,8 +31,8 @@
             @hasSection('logo')
                 @yield('logo')
             @else
-                <img src="{{ asset('icon-light.svg') }}" class="block dark:hidden h-6" alt="icon light">
-                <img src="{{ asset('icon-dark.svg') }}" class="hidden dark:block h-6" alt="icon dark">
+                <img src="{{ asset('images/icon-light.svg') }}" class="block dark:hidden h-6" alt="icon light">
+                <img src="{{ asset('images/icon-dark.svg') }}" class="hidden dark:block h-6" alt="icon dark">
             @endif
             <span class="text-lg font-bold">
             @yield('logo-text')
