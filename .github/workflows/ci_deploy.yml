@@ -49,15 +49,6 @@ jobs:
           rm -f .env README.md
 
       # Deploy to VPS
-      - name: Setting up Environment
-        run: |
-          # create env from secret (token, id, public key)
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-          ssh-keyscan -p ${{ secrets.VPS_PORT }} -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
-
       - name: Deploy to VPS
         uses: burnett01/rsync-deployments@7.1.0
         with:
