@@ -2,7 +2,6 @@
 
 @push('ad-button','onclick="window.open("{{ $newTabUrl }}", "_blank");"')
 
-@section('logo-text','Secret Message')
 
 @section('right-side')
     <div id="container-bcb746976ca53f11f9d6d0db360d6a56" class="w-full"></div>
