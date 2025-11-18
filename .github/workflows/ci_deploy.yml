@@ -45,29 +45,18 @@ jobs:
         run: |
           rm -rf node_modules
           rm -rf tests
-          rm -rf .git .github
-          rm -f .env README.md
+          rm -rf .git .github .editorconfig
+          rm -f .env README.md .gitignore
 
       # Deploy to VPS
-      - name: Setting up Environment
-        run: |
-          # create env from secret (token, id, public key)
-          mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-
-          ssh-keyscan -p ${{ secrets.VPS_PORT }} -H "${{ secrets.VPS_HOST }}" >> ~/.ssh/known_hosts
-
       - name: Deploy to VPS
-        run: |
-           rsync -aAXvhP -e  "ssh -p ${{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}
-        # uses: burnett01/rsync-deployments@7.1.0
-        # with:
-        #   switches: -avzr --delete --exclude='.env' --exclude='storage/' -e "ssh -p {{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" --rsync-path="echo '${{ secrets.VPS_PW }}' | sudo -S rsync" 
-        #   path: ./
-        #   remote_path: ${{ secrets.VPS_PATH }} # path to your vps
-        #   remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
-        #   remote_port: ${{ secrets.VPS_PORT }} # the port 
-        #   remote_user: ${{ secrets.VPS_USER }} # the user (recommend to use root)
-        #   remote_key: ${{ secrets.VPS_KEY }} #the private ssh key
+        uses: burnett01/rsync-deployments@7.1.0
+        with:
+          switches: -avzr --delete --exclude='.env' --exclude='storage/' 
+          path: ./
+          remote_path: ${{ secrets.VPS_PATH }} # path to your vps
+          remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
+          remote_port: ${{ secrets.VPS_PORT }} # the port 
+          remote_user: ${{ secrets.VPS_USER }} # the user (recommend to use root)
+          remote_key: ${{ secrets.VPS_KEY }} #the private ssh key
         #   # https://github.com/Burnett01/rsync-deployments
