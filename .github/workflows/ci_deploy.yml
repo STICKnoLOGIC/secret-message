@@ -50,15 +50,15 @@ jobs:
 
       # Deploy to VPS
       - name: Deploy to VPS
-        # run: |
-        #    rsync -aAXvhP -e  "ssh -p ${{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}
-        uses: burnett01/rsync-deployments@7.1.0
-        with:
-          switches: -avzr --delete --exclude='.env' --exclude='storage/' -e "ssh -p ${{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" --rsync-path="echo '${{ secrets.VPS_PW }}' | sudo -S rsync" 
-          path: ./
-          remote_path: ${{ secrets.VPS_PATH }} # path to your vps
-          remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
-          remote_port: ${{ secrets.VPS_PORT }} # the port 
-          remote_user: ${{ secrets.VPS_USER }} # the user (recommend to use root)
-          remote_key: ${{ secrets.VPS_KEY }} #the private ssh key
+        run: |
+           rsync -aAXvhP -e  "ssh -p ${{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" ./ ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}
+        # uses: burnett01/rsync-deployments@7.1.0
+        # with:
+        #   switches: -avzr --delete --exclude='.env' --exclude='storage/' -e "ssh -p {{ secrets.VPS_PORT }} -o StrictHostKeyChecking=no" --rsync-path="echo '${{ secrets.VPS_PW }}' | sudo -S rsync" 
+        #   path: ./
+        #   remote_path: ${{ secrets.VPS_PATH }} # path to your vps
+        #   remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
+        #   remote_port: ${{ secrets.VPS_PORT }} # the port 
+        #   remote_user: ${{ secrets.VPS_USER }} # the user (recommend to use root)
+        #   remote_key: ${{ secrets.VPS_KEY }} #the private ssh key
         #   # https://github.com/Burnett01/rsync-deployments
