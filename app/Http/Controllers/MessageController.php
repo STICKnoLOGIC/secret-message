@@ -28,7 +28,7 @@ class MessageController extends Controller
         }
 
         $limit = $data['limit'] ?? 1;
-        $expiresAt = Carbon::now()->addDays((int) $data['expire']??1)->timestamp; // +1 day
+        $expiresAt = Carbon::now()->addDays((int) ( $data['expire'] ?? 1 ))->timestamp; // +1 day
 
 
         // generate secure token, check uniqueness
