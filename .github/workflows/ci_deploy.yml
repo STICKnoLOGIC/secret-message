@@ -47,6 +47,7 @@ jobs:
           rm -rf tests
           rm -rf .git .github .editorconfig
           rm -f .env README.md .gitignore
+          sudo -u www-data
 
       # Deploy to VPS
       - name: Deploy to VPS
