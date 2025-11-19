@@ -21,7 +21,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->view('error.maintenance', [], 503);
             }
 
-            if (!is_int($status) || $status < 100 || $status >= 600) {
+            if ($status < 100 || $status >= 500) {
                 $status = 500;
             }
 

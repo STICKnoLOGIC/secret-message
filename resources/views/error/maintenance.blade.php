@@ -12,8 +12,8 @@
         <div class="z-1 text-center bg-white dark:bg-gray-800 p-0 w-full md:w-2/4 border-t border-b border-t-amber-600 dark:border-t-amber-500 border-b-amber-600 dark:border-b-amber-500">
             <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold">Maintenance Mode</h2>
         </div>
-        <p class="w-full mt-[32px] text-center wrap-break-word"> " Site is Down: We're cooking somthing!!! " </p>
     </div>
+    <p class="w-full mt-[32px] text-center wrap-break-word"> " Site is Down: We're cooking somthing!!! " </p>
 
 @endsection
 
