@@ -35,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
             return response()->view('error.any', [
                 'code' => $status,
                 'title' => 'Something went wrong',
-                'message' => $safeMessage ?? $e->getMessage(),
+                'message' => $e->getMessage(),
             ], $status);
         });
     })->create();
