@@ -23,7 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->view('error.maintenance', [], 503);
             }
 
-            if(is_numeric($status)){}
+            if(is_numeric($status)){
                 $safeMessage = match($status) {
                     404 => 'The Message you are looking for could not be found.',
                     403 => 'You are not authorized to access this page.',
