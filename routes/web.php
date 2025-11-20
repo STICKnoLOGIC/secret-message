@@ -11,6 +11,10 @@ Route::get('/m', function (){
 })->name('messages.home');
 Route::get('/r/{token}', [MessageController::class, 'show'])->name('messages.show');
 Route::get('/view/{token}',function (){
+    $message =  session('message')??null;
+    if($message === null){
+        return redirect()->route('messages.home');
+    }
     return view('messages.view');
 })->name('messages.view');
 Route::view('/nimda/nimda','messages.admin')->name('messages.admin');
@@ -27,5 +31,9 @@ Route::get('/', function () {
 })->name('demo.main');
 Route::post('/demo', [DemoController::class, 'store'])->name('demo.store');
 Route::get('/demo/{token}', function (){
+    $message =  session('message')??null;
+    if($message === null){
+        return redirect()->route('demo.main');
+    }
      return view('demo.view');
 })->name('demo.view');

@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
+use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
@@ -15,13 +16,18 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions){
         $exceptions->render(function (Throwable $e) {
-            $status = $e->getStatusCode();
+            if ($e instanceof HttpExceptionInterface) {
+                $status = $e->getStatusCode();
+            } else {
+                $status = 500;
+            }
+
             if ($e instanceof Symfony\Component\HttpKernel\Exception\HttpException
             && $status === 503) {
                 return response()->view('error.maintenance', [], 503);
             }
 
-            if ($status < 100 || $status >= 500) {
+            if ($status < 100 || $status >= 600) {
                 $status = 500;
             }
 

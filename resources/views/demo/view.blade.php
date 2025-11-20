@@ -10,6 +10,9 @@
 
 @section('content')
     <div class="container bg-white dark:bg-gray-800 mt-4 p-6 rounded-xl shadow-md space-y-6 w-full max-w-xl">
+        <p class="border rounded-b-sm p-1 my-1 border-amber-500 dark:border-amber-600 text-black dark:text-white"> 
+            ‼This is a "Temporary Page", once refreshed, its gone. Better to copy the link before its too late‼
+        </p>
         <p class="text-gray-500 dark:text-gray-400"> This is for A Demo purposes, the message will not be stored in our database.</p>
         <p class="text-amber-600 dark:text-amber-500 text-xl font-extrabold">The Secret:</p>
         <div class="card px-4">
