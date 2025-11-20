@@ -1,4 +1,4 @@
-@extends('messages.ads')
+@extends('legal.main')
 
 @section('content')
     <div class="w-full rounded-lg border border-amber-200 bg-amber-50 dark:bg-amber-800 dark:border-amber-700 p-4 ">
@@ -14,7 +14,7 @@
             <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold">Page Not Found</h2>
         </div>
     </div>
-    <p class="w-full mt-[32px] text-center wrap-break-word"> "{{ $message ?? 'Something went wrong.' }}"</p>
+    <p class="w-full mt-[32px] text-center wrap-break-word"> "{{ $message }}"</p>
     </div>
 @endsection
 

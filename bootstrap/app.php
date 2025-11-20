@@ -15,9 +15,9 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions){
         $exceptions->render(function (Throwable $e) {
-            $status = $e->getCode();
+            $status = $e->getStatusCode();
             if ($e instanceof Symfony\Component\HttpKernel\Exception\HttpException
-            && $e->getStatusCode() === 503) {
+            && $status === 503) {
                 return response()->view('error.maintenance', [], 503);
             }
 
@@ -35,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
             return response()->view('error.any', [
                 'code' => $status,
                 'title' => 'Something went wrong',
-                'message' => $e->getMessage(),
+                'message' => $safeMessage ?? $e->getMessage(),
             ], $status);
         });
     })->create();

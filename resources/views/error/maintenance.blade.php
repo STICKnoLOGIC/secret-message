@@ -13,7 +13,7 @@
             <h2 class="text-xl md:text-2xl lg:text-3xl font-semibold">Maintenance Mode</h2>
         </div>
     </div>
-    <p class="w-full mt-[32px] text-center wrap-break-word"> " Site is Down: We're cooking somthing!!! " </p>
+    <p class="w-full mt-[32px] text-center wrap-break-word"> " Site is Down: We're cooking something!!! " </p>
 
 @endsection
 
