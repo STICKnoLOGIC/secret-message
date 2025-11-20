@@ -19,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
             if ($e instanceof HttpExceptionInterface) {
                 $status = $e->getStatusCode();
             } else {
-                $status = 500;
+                $status = $e->getCode();
             }
 
             if ($e instanceof Symfony\Component\HttpKernel\Exception\HttpException
@@ -27,9 +27,9 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->view('error.maintenance', [], 503);
             }
 
-            if ($status < 100 || $status >= 600) {
-                $status = 500;
-            }
+            // if ($status < 100 || $status >= 600) {
+            //     $status = 500;
+            // }
 
             $safeMessage = match($status) {
                 404 => 'The Message you are looking for could not be found.',
