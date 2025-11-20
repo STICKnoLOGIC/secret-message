@@ -23,12 +23,15 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->view('error.maintenance', [], 503);
             }
 
-            $safeMessage = match($status) {
-                404 => 'The Message you are looking for could not be found.',
-                403 => 'You are not authorized to access this page.',
-                419 => 'Your session has expired. Please refresh the page.',
-                500 => 'Something went wrong. Please try again later.',
-            };
+            if(is_numeric($status)){}
+                $safeMessage = match($status) {
+                    404 => 'The Message you are looking for could not be found.',
+                    403 => 'You are not authorized to access this page.',
+                    419 => 'Your session has expired. Please refresh the page.',
+                    500 => 'Something went wrong. Please try again later.',
+                    default => null,
+                };
+            }
 
             return response()->view('error.any', [
                 'code' => $status,
