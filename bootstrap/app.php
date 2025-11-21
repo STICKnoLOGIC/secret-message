@@ -33,6 +33,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 };
             }
 
+            if(!is_numeric($status) || $status < 100 || $status >= 600){
+                $status = 500;
+            }
+
             return response()->view('error.any', [
                 'code' => $status,
                 'title' => 'Something went wrong',
