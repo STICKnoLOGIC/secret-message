@@ -59,37 +59,28 @@ class MessageController extends Controller
             ->where('limit', '>', 0)
             ->where('expires_at', '>', $now)
             ->decrement('limit', 1);
-        try{
-            if ($affected === 0) {
-                // Either not found, expired, or limit reached
-                $message = Message::withTrashed()->where('token', $token)->first();
+        if ($affected === 0) {
+            // Either not found, expired, or limit reached
+            $message = Message::withTrashed()->where('token', $token)->first();
 
-                if (! $message) {
-                    abort(404, 'Message not found');
-                }
-
-                if ($message->expires_at <= $now) {
-                    $message->delete(); // soft delete for retention
-                    abort(410, 'Message expired');
-                }
-
-                if ($message->limit <= 0) {
-                    $message->delete();
-                    abort(410, 'Message limit reached');
-                }
-
-                // fallback (shouldn’t usually reach here)
-                abort(410, 'Message unavailable');
+            if (! $message) {
+                abort(404, 'Message not found');
             }
-        }catch (HttpException $e) {
-            $status = $e->getStatusCode();
-            $msg = $e->getMessage();
-            return view('error.any', [
-                'code' => $status,
-                'title' => 'Something went wrong',
-                'message' => $msg,
-            ], $status);
+
+            if ($message->expires_at <= $now) {
+                $message->delete(); // soft delete for retention
+                abort(410, 'Message expired');
+            }
+
+            if ($message->limit <= 0) {
+                $message->delete();
+                abort(410, 'Message limit reached');
+            }
+
+            // fallback (shouldn’t usually reach here)
+            abort(410, 'Message unavailable');
         }
+
         // 2) Fetch updated row
         $message = Message::where('token', $token)->firstOrFail();
 

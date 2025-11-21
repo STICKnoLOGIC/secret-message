@@ -24,7 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             if(is_numeric($status)){
-                $safeMessage = match($status) {
+                $safeMessage = match((int)$status) {
                     404 => 'The Message you are looking for could not be found.',
                     403 => 'You are not authorized to access this page.',
                     419 => 'Your session has expired. Please refresh the page.',
