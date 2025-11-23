@@ -52,12 +52,14 @@ class MessageController extends Controller
      */
     public function show(Request $request, string $token)
     {
-        if(Crawler::isCrawler()){
+        $crawlerDetect = app(Crawler::class);
+
+        if ($crawlerDetect->isCrawler()) {
             return view('main.app');
         }
         $now = now()->timestamp;
 
-        // 1) Try to decrement atomically
+        // Try to decrement atomically
         $affected = DB::table('messages')
             ->where('token', $token)
             ->where('limit', '>', 0)
@@ -85,7 +87,7 @@ class MessageController extends Controller
             abort(410, 'Message unavailable');
         }
 
-        // 2) Fetch updated row
+        // Fetch updated row
         $message = Message::where('token', $token)->firstOrFail();
 
         // 3) Log the view
@@ -96,7 +98,7 @@ class MessageController extends Controller
             'viewed_at'  => now(),
         ]);
 
-        // 4) If limit hit zero, mark as soft-deleted
+        // If limit hit zero, mark as soft-deleted
         if ($message->limit <= 0) {
             $message->delete();
         }
