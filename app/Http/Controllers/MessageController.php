@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
+use Jaybizzle\CrawlerDetect\CrawlerDetect as Crawler;
 
 class MessageController extends Controller
 {
@@ -51,6 +52,9 @@ class MessageController extends Controller
      */
     public function show(Request $request, string $token)
     {
+        if(Crawler::isCrawler()){
+            return view('main.app');
+        }
         $now = now()->timestamp;
 
         // 1) Try to decrement atomically
