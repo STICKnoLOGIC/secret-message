@@ -2,13 +2,37 @@
 <html lang="en" class="">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
-    <link rel="alternate icon" href="{{ asset('images/favicon.png') }}">
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Secret Message')</title>
+    
+    <!-- Basic SEO -->
+    <title>@yield('title', config('app.name', 'Laravel'))</title>
+    <meta name="description" content="{{ config('app.desc', 'Ssh! It\'s our little secret') }}">
+    <link rel="canonical" href="https://secret.sticknologic.is-a.dev">
+
+    <!-- Open Graph / Facebook / LinkedIn / Threads / Instagram / Reddit -->
+    <meta property="og:title" content="{{ config('app.name', 'Laravel') }}">
+    <meta property="og:description" content="{{ config('app.desc', 'Ssh! It\'s our little secret') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request()->fullUrl() }}">
+    <meta property="og:site_name" content="{{ config('app.name', 'Laravel') }}">
+    <meta property="og:image" content="{{ asset('images/og.png') }}">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter / X / Bluesky -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@yield('title', config('app.name', 'Laravel'))">
+    <meta name="twitter:description" content="{{ config('app.desc', 'Ssh! It\'s our little secret') }}">
+    <meta name="twitter:image" content="{{ asset('images/og.png') }}">
+    <meta name="twitter:site" content="@{{ config('app.aurthor', 'STICKnolOGIC') }}">
+    <meta name="twitter:creator" content="@{{ config('app.aurthor', 'STICKnolOGIC') }}">
+
+    <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
+    <link rel="alternate icon" href="{{ asset('images/favicon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script>
         (function () {

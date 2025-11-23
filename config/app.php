@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Secret Message'),
 
     /*
     |--------------------------------------------------------------------------
@@ -26,7 +26,20 @@ return [
     |
     */
 
-    'author' => env('APP_AUTHOR', 'Laravel'),
+    'author' => env('APP_AUTHOR', 'STICKnoLOGIC'),
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Application Description
+    |--------------------------------------------------------------------------
+    |
+    | This value is the description of your site, which will be used when the
+    | framework needs to place the application's description in a header or
+    | other UI elements where an application author needs to be displayed.
+    |
+    */
+
+    'desc' => env('APP_DESCRIPTION', "Ssh! It's our little secret"),
 
     /*
     |--------------------------------------------------------------------------
