@@ -2,7 +2,7 @@
 
 @php
     $message =  session('message');
-    $url = 'https://secret.sticknologic.is-a.dev/r/'.$message->token;
+    $url = config('app.url', 'https://secret.sticknologic.is-a.dev').'/r/'.$message->token;
 @endphp
 
 @section('head-script')

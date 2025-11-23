@@ -1,7 +1,7 @@
 @extends('legal.main')
 
 @section('content')
-    <div class="w-full rounded-lg border border-amber-200 bg-amber-50 dark:bg-amber-800 dark:border-amber-700 p-4 ">
+    <div class="w-full rounded-lg bg-amber-50 dark:bg-amber-900 my-4 py-4 ">
     <div class="relative flex items-center justify-center md:justify-end h-40 md:h-96 w-full overflow-hidden mb-6">
         
        <!-- Background text -->
