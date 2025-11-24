@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Message;
-use Carbon\Carbon;
 
 class CleanupExpiredMessages extends Command
 {
@@ -14,7 +13,7 @@ class CleanupExpiredMessages extends Command
 
     public function handle()
     {
-        $threshold = Carbon::now()->timestamp;
+        $threshold = now()->timestamp;
 
         $count = Message::onlyTrashed()
             ->where('expires_at', '<=', $threshold)
