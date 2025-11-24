@@ -6,6 +6,7 @@ use App\Models\Message;
 use App\Models\MessageView;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 use Jaybizzle\CrawlerDetect\CrawlerDetect as Crawler;
 
@@ -28,7 +29,7 @@ class MessageController extends Controller
         }
 
         $limit = $data['limit'] ?? 1;
-        $expiresAt = now()->addDays((int) ( $data['expire'] ?? 1 ))->timestamp; // +1 day
+        $expiresAt = Carbon::now()->addDays((int) ( $data['expire'] ?? 1 ))->timestamp; // +1 day
 
         $message = Message::create([
             'token'      => Message::generateUniqueToken(),
@@ -51,7 +52,7 @@ class MessageController extends Controller
         if ($crawlerDetect->isCrawler()) {
             return view('main.app');
         }
-        $now = now()->timestamp;
+        $now = Carbon::now()->timestamp;
 
         // Try to decrement atomically
         $affected = DB::table('messages')

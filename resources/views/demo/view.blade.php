@@ -18,7 +18,7 @@
         <div class="card px-4">
             <p class="text-m break-words">{!! \App\Helpers\TextHelper::linkify($message->message) !!}</p>
             <div class="mt-3 text-sm text-gray-600">
-                Expires at: {{ \Carbon\Carbon::createFromTimestamp($message->expires_at)->toDayDateTimeString() }}<br>
+                Expires at: {{ \Carbon\Carbon::createFromTimestamp($message->expires_at, config('app.timezone'))->toDayDateTimeString() }}<br>
                 Remaining views: {{ short_number($message->limit) }}
             </div>
         </div>
