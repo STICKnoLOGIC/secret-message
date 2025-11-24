@@ -9,7 +9,7 @@ class Message extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['token','message','limit','expires_at'];
+    protected $fillable = ['token','message','limit','expires_at','ip'];
 
     protected $casts = [
         'limit' => 'integer',

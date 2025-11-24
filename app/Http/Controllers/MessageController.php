@@ -31,17 +31,12 @@ class MessageController extends Controller
         $limit = $data['limit'] ?? 1;
         $expiresAt = Carbon::now()->addDays((int) ( $data['expire'] ?? 1 ))->timestamp; // +1 day
 
-
-        // generate secure token, check uniqueness
-        do {
-            $token = bin2hex(random_bytes(16)); // 32 hex chars
-        } while (Message::where('token', $token)->exists());
-
         $message = Message::create([
-            'token'      => $token,
+            'token'      => Message::generateUniqueToken(),
             'message'    => $data['message'],
             'limit'      => $limit,
             'expires_at' => $expiresAt,
+            'ip'         => $request->ip(),
         ]);
 
         return redirect()->route('messages.view',['token'=>$message->token])->with('message',$message);
