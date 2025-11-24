@@ -14,7 +14,7 @@ class CleanupExpiredMessages extends Command
 
     public function handle()
     {
-        $threshold = Carbon::now()->subDays(3)->timestamp;
+        $threshold = Carbon::now()->timestamp;
 
         $count = Message::onlyTrashed()
             ->where('expires_at', '<=', $threshold)
