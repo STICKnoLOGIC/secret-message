@@ -11,7 +11,7 @@
     <p class="text-m break-words">{!! \App\Helpers\TextHelper::linkify($message->message, 'https://godlessgirlsmoothly.com/cuj6e8318?key=385472db99ce0544ac7c31d67fc73d63') !!}</p>
 
     <div class="mt-3 text-sm text-gray-600">
-      Expires at: {{ \Carbon\Carbon::createFromTimestamp($message->expires_at)->toDayDateTimeString() }}<br>
+      Expires at: {{ \Carbon\Carbon::createFromTimestamp($message->expires_at.config('app.timezone'))->toDayDateTimeString() }}<br>
       Remaining views: {{ short_number($message->limit) }}
     </div>
   </div>
