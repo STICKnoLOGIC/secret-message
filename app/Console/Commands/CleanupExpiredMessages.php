@@ -18,6 +18,7 @@ class CleanupExpiredMessages extends Command
 
         $count = Message::onlyTrashed()
             ->where('expires_at', '<=', $threshold)
+            ->orWhere('limit', '<=', 0)
             ->forceDelete();
 
         $this->info("Deleted {$count} old expired messages.");
