@@ -9,9 +9,10 @@
 
         <header class="mb-6">
             <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight text-orange-500 dark:text-orange-400">{{ config('app.name', 'Laravel') }} — Terms of Service</h1>
-            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Effective date: <strong>October 26, 2025</strong></p>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Effective date: <strong>January 8, 2026</strong></p>
         </header>
 
+        
         <section class="rounded-lg border border-amber-200 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-700 p-4 mb-6">
             <h2 class="text-xl font-semibold text-amber-600">At a glance</h2>
             <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-800 dark:text-gray-200">
@@ -23,6 +24,16 @@
                 <li><strong>DMCA</strong>: For DMCA requests please see <a href="{{ route('legal.dmca') }}" class="text-amber-600 hover:underline">our DMCA page</a>.</li>
             </ul>
         </section>
+        
+        <section class="rounded-lg border border-amber-200 bg-amber-50 dark:bg-amber-900/20 dark:border-amber-700 p-4 mb-6">
+            <h2 class="text-xl font-semibold text-amber-600">Legal Notice</h2>
+            <ul class="mt-2 list-disc pl-5 space-y-1 text-sm text-gray-800 dark:text-gray-200">
+                <li>This service is provided as-is for demonstration and personal use only.</li>
+                <li>Project name, branding, and domain are the property of STICKnoLOGIC.</li>
+                <li>Running public, commercial, or competing services using this code is not permitted.</li>
+            </ul>
+        </section>
+
 
         <section>
             <h2 class="text-2xl font-bold mb-2 text-orange-500 dark:text-orange-400">Full Terms of Service</h2>

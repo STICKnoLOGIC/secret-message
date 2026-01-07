@@ -1,61 +1,169 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![](./public/images/og.png)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# Secret Message
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Secret Message** is a simple and "Ad-Ready" website that lets you send private messages that automatically disappear after being viewed.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+🌐 Screenshot:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## What Can I Do Here?
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+You can:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* Write a short private message
+* Create a secret link
+* Share the link with someone
+* Let the message delete itself automatically
 
-## Laravel Sponsors
+No account. No login. No history.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## How It Works (Simple Steps)
+1. Open the website
+2. Type your message
+3. Choose how many times it can be opened
+4. Click **Create Message**
+5. Copy the secret link
+6. Send the link to someone
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Once the message reaches its limit, it is **permanently deleted**.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Example Use Cases
 
-## Code of Conduct
+* Sharing a one-time password
+* Sending a private note
+* Temporary reminders
+* Anonymous tips (non-harmful only)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## What Happens to My Message?
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* It is stored **only temporarily**
+* It deletes itself automatically
+* It cannot be recovered after deletion
+* Even the site owner cannot read it after expiration
+
+---
+
+## What This Site Is NOT
+
+This site is **not**:
+
+* A chat app
+* A file storage service
+* A secure vault for sensitive data
+* A replacement for encrypted messaging apps
+
+This project is intended for:
+
+* Demonstration purposes
+* Learning and experimentation
+* Low-risk, temporary message sharing
+
+Use it only for **low-risk, temporary messages**.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### ❓ Do I need an account?
+
+No. Anyone can use the site without signing up.
+
+### ❓ Can I see who opened my message?
+
+No. The site does not track readers.
+
+### ❓ Can I recover a deleted message?
+
+No. Once it is gone, it is gone forever.
+
+### ❓ Is this encrypted?
+
+This is a simple demo project. Do not rely on it for high-security needs.
+
+### ❓ Is it free?
+
+Yes.
+
+---
+
+## Privacy Policy (Simple Version)
+
+* No accounts are created
+* No personal information is collected (Aside for your IP that we will only use to take down those who abuse the said services)
+* Messages are temporary
+* No long-term logs of message content
+
+Your privacy is respected, but **absolute security is not guaranteed**.
+
+---
+
+## Terms of Use (Simple Version)
+
+By using this site, you agree that:
+
+* You will not post illegal, harmful, or abusive content
+* Messages may be deleted automatically at any time
+* The service is provided **as-is**
+* The owner is not responsible for lost messages or misuse
+
+---
+
+## Disclaimer
+
+This project is for **personal and demonstration purposes only**.
+Do not use it for sensitive, legal, or critical communication.
+
+---
+
+## Created By
+
+**STICKnoLOGIC**
+Part of the sticknologic.is-a.dev projects
+
+---
+
+## Usage & Brand Restrictions
+
+Although the source code of this project is publicly visible for transparency and learning purposes, the following restrictions apply:
+
+* This project may not be used for commercial purposes
+* You may not run a public or competing service based on this code
+* You may not reuse the project name, branding, or domain
+* This includes: Secret Message, STICKnoLOGIC, and sticknologic.is-a.dev
+* Forks and modifications must give clear credit to the original author
+* Private, personal, or internal use for learning is allowed
+
+If you wish to use this project beyond these limits, explicit permission from the author is required.
+
+---
+
+## Want Improvements?
+
+If you plan to expand this project, good next steps could be:
+
+* Add a countdown timer
+* Add optional password protection
+* Add automatic time-based expiration
+* Add a short “message viewed” notice
+
+---
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The source code is licensed under the Apache License 2.0.
+This provides:
+
+* Strong “as-is” and no-liability protection
+* Permission to view, study, and audit the code
+* Explicit protection for project names and branding
+* See the [LICENSE](./LICENSE) file for full legal text.

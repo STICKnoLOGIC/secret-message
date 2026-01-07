@@ -15,12 +15,12 @@
     <p class="border rounded-b-sm p-1 my-1 border-amber-500 dark:border-amber-600 text-black dark:text-white"> 
         ‼This is a "Temporary Page", once refreshed, its gone. Better to copy the link before its too late‼
     </p>
-    <p class="text-amber-600 dark:text-amber-500 text-xl font-extrabold">The Secret:</p>
-    <div class="card px-4">
-        <p class="text-m break-words">{!! \App\Helpers\TextHelper::linkify($message->message, 'https://godlessgirlsmoothly.com/cuj6e8318?key=385472db99ce0544ac7c31d67fc73d63') !!}</p>
-        <div class="mt-3 text-sm text-gray-600">
+    <p class="text-amber-600 dark:text-amber-500 text-xl font-extrabold mb-8 border-b border-amber-600">The Secret:</p>
+    <div class="px-4 select-none">
+        <p class="text-m break-words">{!! \App\Helpers\TextHelper::linkify($message->message, App\Helpers\AdsHelper::SMARTLINK) !!}</p>
+        <div class="mt-8 text-sm text-gray-600 border-t border-amber-600">
             Expires at: {{ \Carbon\Carbon::createFromTimestamp($message->expires_at,config('app.timezone'))->toDayDateTimeString() }}<br>
-            Remaining views: {{ short_number($message->limit) }}
+            Remaining: {{ Number::abbreviate($message->limit) }} View/s
         </div>
     </div>
     <div class="flex items-center gap-2">
@@ -34,7 +34,7 @@
 
         <button
             id="copyBtn"
-            class="px-3 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition"
+            class="px-3 py-2 bg-orange-500 text-white hover:cursor-pointer rounded-lg hover:bg-orange-600 transition"
         >
             <i class="fa-solid fa-link text-white"></i>
         </button>
@@ -51,7 +51,7 @@
             <a href="https://www.reddit.com/submit?url={{ $url }}&title=🤫🤫Sssh.! This is our little secret..." target="_blank" rel="noopener noreferrer"><span class="fa-brands fa-square-reddit text-4xl text-amber-600 dark:text-amber-500"></span></a>
         </div>
     </div>
-    <a href="{{ route('messages.home') }}"
+    <a href="{{ route('messages.home') }}" onclick="window.open('{{ App\Helpers\AdsHelper::SMARTLINK }}', '_blank')"
            class="inline-block w-full bg-orange-500 text-center hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-md transition">
         CREATE ANOTHER SECRET
     </a>
@@ -62,6 +62,7 @@
     <script>
         document.getElementById('copyBtn').addEventListener('click', async () => {
             const input = document.getElementById('copyTarget');
+            window.open('{{ App\Helpers\AdsHelper::SMARTLINK }}', '_blank');
             try {
                 await navigator.clipboard.writeText(input.value);
                 alert('Copied to clipboard!');

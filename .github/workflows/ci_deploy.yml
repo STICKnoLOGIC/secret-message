@@ -2,6 +2,19 @@ name: Deploy Laravel App
 
 on:
   workflow_dispatch:
+    inputs:
+      create_release:
+        description: "Create GitHub Release"
+        required: true
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+    version:
+      description: "Release version (e.g. v1.0.0)"
+      required: false
 
 jobs:
   build-and-deploy:
@@ -40,7 +53,7 @@ jobs:
           npm run build
         if: hashFiles('package.json') != ''
 
-      # Prepare deployment package
+      # Cleaning up package
       - name: Prepare deployment package
         run: |
           rm -rf node_modules
@@ -48,15 +61,28 @@ jobs:
           rm -rf .git .github .editorconfig
           rm -f .env README.md .gitignore
 
-      # Deploy to VPS
-      - name: Deploy to VPS
-        uses: burnett01/rsync-deployments@7.1.0
+       # Create tarball
+      - name: Create tar archive
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          if [ -z "$VERSION" ]; then
+            VERSION="dev"
+          fi
+          TAR_NAME="secret-app-$VERSION.tar.gz"
+          tar -czf "$TAR_NAME" .
+          echo "TAR_NAME=$TAR_NAME" >> $GITHUB_ENV
+
+      # Create GitHub Release (optional)
+      - name: Create GitHub Release
+        if: inputs.create_release == 'true'
+        uses: softprops/action-gh-release@v2
         with:
-          switches: -avzr --chown=www-data:www-data --delete --exclude='.env' --exclude='storage/' --exclude='bootstrap/cache'
-          path: ./
-          remote_path: ${{ secrets.VPS_PATH }} # path to your vps
-          remote_host: ${{ secrets.VPS_HOST }} # the host or server IP
-          remote_port: ${{ secrets.VPS_PORT }} # the port 
-          remote_user: ${{ secrets.VPS_USER }} # the user (recommend to use root)
-          remote_key: ${{ secrets.VPS_KEY }} #the private ssh key
-        #   # https://github.com/Burnett01/rsync-deployments
+          tag_name: ${{ inputs.version }}
+          name: Secret App ${{ inputs.version }}
+          draft: false
+          prerelease: false
+          files: |
+            ${{ env.TAR_NAME }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

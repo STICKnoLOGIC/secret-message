@@ -44,8 +44,8 @@
             </div>
         @endif
 
-        <button type="submit" @stack('ad-button')
-                class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-md transition">
+        <button type="submit" onclick="window.open('{{ App\Helpers\AdsHelper::SMARTLINK }}', '_blank')"
+                class="w-full bg-orange-500 hover:bg-orange-600 hover:cursor-pointer text-white font-bold py-3 px-4 rounded-lg shadow-md transition">
             CREATE
         </button>
     </form>

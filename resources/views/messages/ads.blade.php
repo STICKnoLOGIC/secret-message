@@ -4,28 +4,24 @@
 
 
 @section('right-side')
-    <div id="container-bcb746976ca53f11f9d6d0db360d6a56" class="w-full"></div>
+{!! App\Helpers\AdsHelper::NATIVE_BANNER !!}    
 @endsection
 
 @section('left-side')
-    <script type="text/javascript">
-        atOptions = {
-            'key' : 'c2d94d26fd98640d8af46184deb6dba1',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//godlessgirlsmoothly.com/c2d94d26fd98640d8af46184deb6dba1/invoke.js"></script>
+<div class="hidden md:block">
+        {!! App\Helpers\AdsHelper::BANNER_300x250 !!}
+    </div>
+    <div class="md:hidden">
+        {!! App\Helpers\AdsHelper::BANNER_468x60 !!}
+    </div>
 @endsection
-
-
+    
+    
 @section('body-script')
-    <script async="async" data-cfasync="false" src="//pl27792213.effectivegatecpm.com/bcb746976ca53f11f9d6d0db360d6a56/invoke.js"></script>
-@endsection
-
-@section('head-script')
+    {!! App\Helpers\AdsHelper::SOCIAL_BANNER !!}
+    @endsection
+    
+    @section('head-script')
     <style>
         iframe{
             width: 100%;

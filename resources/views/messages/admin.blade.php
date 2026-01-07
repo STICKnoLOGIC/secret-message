@@ -49,7 +49,7 @@
         @endif
 
         <button type="submit"
-                class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg shadow-md transition">
+                class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold hover:cursor-pointer py-3 px-4 rounded-lg shadow-md transition">
             CREATE
         </button>
     </form>

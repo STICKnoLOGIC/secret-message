@@ -40,7 +40,6 @@
         <h2 class="text-xl font-semibold text-orange-500 dark:text-orange-400 mt-8 mb-2">How we respond</h2>
         <ul class="list-disc text-neutral-900 dark:text-neutral-300 ml-6 space-y-1">
             <li>We promptly disable access to allegedly infringing material hosted on our systems.</li>
-            <li>We preserve relevant logs and records.</li>
             <li>Block the IP address of the alleged user.</li>
         </ul>
 

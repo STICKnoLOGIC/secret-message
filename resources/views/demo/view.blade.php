@@ -14,12 +14,12 @@
             ‼This is a "Temporary Page", once refreshed, its gone. Better to copy the link before its too late‼
         </p>
         <p class="text-gray-500 dark:text-gray-400"> This is for A Demo purposes, the message will not be stored in our database.</p>
-        <p class="text-amber-600 dark:text-amber-500 text-xl font-extrabold">The Secret:</p>
-        <div class="card px-4">
+        <p class="text-amber-600 dark:text-amber-500 text-xl mb-8 border-b border-amber-600 font-extrabold">The Secret:</p>
+        <div class="px-4 select-none">
             <p class="text-m break-words">{!! \App\Helpers\TextHelper::linkify($message->message) !!}</p>
-            <div class="mt-3 text-sm text-gray-600">
+            <div class="mt-8 text-sm text-gray-600 border-t border-amber-600">
                 Expires at: {{ \Carbon\Carbon::createFromTimestamp($message->expires_at, config('app.timezone'))->toDayDateTimeString() }}<br>
-                Remaining views: {{ short_number($message->limit) }}
+                Remaining: {{ Number::abbreviate($message->limit) }} View/s
             </div>
         </div>
         <div class="flex items-center gap-2">

@@ -33,7 +33,7 @@
         },
         "files": [
             "app/Helpers/TextHelper.php",
-            "app/Helpers/NumberHelper.php"
+            "app/Helpers/AdsHelper.php"
         ]
     },
     "autoload-dev": {

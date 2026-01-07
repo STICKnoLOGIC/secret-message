@@ -65,33 +65,26 @@ class MessageController extends Controller
             $message = Message::withTrashed()->where('token', $token)->first();
 
             if (! $message) {
-                abort(404, 'Message not found');
+                abort(404, 'Secret not found');
             }
 
             if ($message->expires_at <= $now) {
                 $message->delete(); // soft delete for retention
-                abort(410, 'Message expired');
+                abort(410, 'Secret expired');
             }
 
             if ($message->limit <= 0) {
                 $message->delete();
-                abort(410, 'Message limit reached');
+                abort(410, 'Secret limit reached');
             }
 
             // fallback (shouldn’t usually reach here)
-            abort(410, 'Message unavailable');
+            abort(410, 'Secret unavailable');
         }
 
         // Fetch updated row
         $message = Message::where('token', $token)->firstOrFail();
 
-        // 3) Log the view
-        MessageView::create([
-            'message_id' => $message->id,
-            'viewer_ip'  => $request->ip(),
-            'user_agent' => $request->userAgent(),
-            'viewed_at'  => now(),
-        ]);
 
         // If limit hit zero, mark as soft-deleted
         if ($message->limit <= 0) {

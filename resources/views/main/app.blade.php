@@ -28,8 +28,8 @@
     <meta name="twitter:title" content="@yield('title', config('app.name', 'Laravel'))">
     <meta name="twitter:description" content="{{ config('app.desc', 'Ssh! It\'s our little secret') }}">
     <meta name="twitter:image" content="{{ asset('images/og.png') }}">
-    <meta name="twitter:site" content="@{{ config('app.aurthor', 'STICKnolOGIC') }}">
-    <meta name="twitter:creator" content="@{{ config('app.aurthor', 'STICKnolOGIC') }}">
+    <meta name="twitter:site" content="@{{ config('app.author', 'STICKnolOGIC') }}">
+    <meta name="twitter:creator" content="@{{ config('app.author', 'STICKnolOGIC') }}">
 
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/favicon.svg') }}">
     <link rel="alternate icon" href="{{ asset('images/favicon.png') }}">
@@ -64,7 +64,7 @@
         </div>
     </a>
     <button id="themeToggle"
-            class="bg-gray-200 dark:bg-gray-700 p-2 rounded shadow hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            class="bg-gray-200 dark:bg-gray-700 p-2 rounded shadow hover:bg-gray-300 hover:cursor-pointer dark:hover:bg-gray-600 transition"
             aria-label="Toggle Theme">
     </button>
 </header>
@@ -108,6 +108,7 @@
        href="{{ route('legal.privacy') }}">Privacy Policy</a>
     <a class="text-orange-500 dark:text-orange-400"
        href="{{ route('legal.dmca') }}">DMCA</a>
+    <br>
 </footer>
 
 <!-- Theme Toggle Script -->
