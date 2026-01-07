@@ -16,19 +16,16 @@ on:
         required: false
 
 jobs:
-  build-and-deploy:
+  build-and-release:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # install rsync
       - name: Install rsync
         run: sudo apt-get update && sudo apt-get install rsync
 
-      # Setup PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -36,11 +33,9 @@ jobs:
           extensions: mbstring, bcmath, intl, pdo, pdo_mysql
           tools: composer
 
-      # Install Composer dependencies (optimized for production)
       - name: Install Composer dependencies
         run: composer install --no-dev --optimize-autoloader
 
-      # Build frontend (if applicable)
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
@@ -52,7 +47,6 @@ jobs:
           npm run build
         if: hashFiles('package.json') != ''
 
-      # Cleaning up package
       - name: Prepare deployment package
         run: |
           rm -rf node_modules
@@ -60,7 +54,6 @@ jobs:
           rm -rf .git .github .editorconfig
           rm -f .env README.md .gitignore
 
-       # Create tarball
       - name: Create tar archive
         env:
           VERSION: ${{ inputs.version }}
@@ -88,7 +81,14 @@ jobs:
 
           echo "TAR_NAME=$TAR_NAME" >> $GITHUB_ENV
 
-      # Create GitHub Release (optional)
+      - name: Upload build artifact
+        if: inputs.create_release == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: laravel-build
+          path: ${{ env.TAR_NAME }}
+          retention-days: 7
+
       - name: Create GitHub Release
         if: inputs.create_release == 'true'
         uses: softprops/action-gh-release@v2
