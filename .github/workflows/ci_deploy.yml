@@ -61,7 +61,7 @@ jobs:
           if [ -z "$VERSION" ]; then
             VERSION="dev"
           fi
-          TAR_NAME="secret-app-$VERSION.tar.gz"
+          TAR_NAME="secret-message-$VERSION.tar.gz"
           STAGING_DIR="/tmp/secret-app"
 
           mkdir -p "$STAGING_DIR"
@@ -94,7 +94,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.version }}
-          name: Secret App ${{ inputs.version }}
+          name: Secret Message ${{ inputs.version }}
           draft: false
           prerelease: false
           files: |
