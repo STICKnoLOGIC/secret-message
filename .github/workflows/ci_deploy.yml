@@ -11,10 +11,9 @@ on:
         options:
           - "false"
           - "true"
-
-    version:
-      description: "Release version (e.g. v1.0.0)"
-      required: false
+      version:
+        description: "Release version (e.g. v1.0.0)"
+        required: false
 
 jobs:
   build-and-deploy:

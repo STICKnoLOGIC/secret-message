@@ -5,7 +5,31 @@
 
 **Secret Message** is a simple and "Ad-Ready" website that lets you send private messages that automatically disappear after being viewed.
 
-🌐 Screenshot:
+<details>
+<summary>📸 View Screenshot</summary>
+
+<img width="619" height="947" alt="image" src="https://github.com/user-attachments/assets/ccddaa8a-dc6e-4c71-943a-4c8d75b2cbe9" />
+<img width="619" height="953" alt="image" src="https://github.com/user-attachments/assets/953eca02-4449-438a-8cb9-b0061be6ff7d" />
+<img width="619" height="991" alt="image" src="https://github.com/user-attachments/assets/bb0ce863-3884-4b72-8f4f-359d5c7d9287" />
+<img width="619" height="954" alt="image" src="https://github.com/user-attachments/assets/ae407238-0804-4f2f-8805-939862600a3c" />
+
+</details>
+<details>
+<summary>📸 View Screenshot (with Actual Ads)</summary>
+
+// with actual ads
+<img width="1919" height="953" alt="image" src="https://github.com/user-attachments/assets/073d4c24-0119-4939-97ba-328cab11b0ec" />
+<img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/b7b34cdc-25a7-4a43-8d35-26cd0348b084" />
+<img width="1919" height="950" alt="image" src="https://github.com/user-attachments/assets/23b36a09-2572-4e69-b9b5-93a88cbb35db" />
+<img width="1919" height="956" alt="image" src="https://github.com/user-attachments/assets/db92681c-3fb2-4144-aab9-a9ffb195aca6" />
+
+
+//mobile
+<img width="296" height="867" alt="image" src="https://github.com/user-attachments/assets/740a5cad-ebf0-4b65-aab5-32eeacd9f7e8" />
+<img width="296" height="866" alt="image" src="https://github.com/user-attachments/assets/cab53535-9df8-4d88-9a2e-aa24ce09782b" />
+<img width="296" height="863" alt="image" src="https://github.com/user-attachments/assets/9e7362a4-c901-4e9d-ae44-84800b65294a" />
+<img width="296" height="854" alt="image" src="https://github.com/user-attachments/assets/ab882349-6940-4f23-a559-64e30d4323ec" />
+</details>
 
 
 ---
