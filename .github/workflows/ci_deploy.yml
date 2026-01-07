@@ -52,7 +52,7 @@ jobs:
           rm -rf node_modules
           rm -rf tests
           rm -rf .git .github .editorconfig
-          rm -f .env README.md .gitignore
+          rm -f .env .gitignore
 
       - name: Create tar archive
         env:
