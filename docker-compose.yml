@@ -1,0 +1,69 @@
+services:
+  secret_message:
+    build:
+      context: .
+      dockerfile: ./docker/production/nginx/Dockerfile
+    restart: unless-stopped
+    container_name: secret_message
+    volumes:
+      - ./docker/data/storage:/var/www/storage:ro
+    networks:
+      - laravel-production
+    ports:
+      - "${NGINX_PORT:-9009}:80"
+    depends_on:
+      php-fpm:
+        condition: service_healthy
+  php-fpm:
+    build:
+      context: .
+      dockerfile: ./docker/common/php-fpm/Dockerfile
+      target: production 
+    restart: unless-stopped
+    volumes:
+      - ./docker/data/storage:/var/www/storage
+    env_file:
+      - .env
+    networks:
+      - laravel-production
+    healthcheck:
+      test: ["CMD-SHELL", "php-fpm-healthcheck || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    depends_on:
+      mariadb:
+        condition: service_healthy
+
+  php-cli:
+    build:
+      context: .
+      dockerfile: ./docker/php-cli/Dockerfile
+    tty: true
+    stdin_open: true
+    env_file:
+      - .env
+    networks:
+      - laravel-production
+
+  secret_message_mariadb:
+    container_name: secret_message_mariadb
+    image: mariadb:11
+    restart: unless-stopped
+    networks:
+      - laravel-production
+    env_file:
+      - .env.db
+    volumes:
+      - ./docker/data/mariadb:/var/lib/mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD-SHELL", "mariadb-admin --user=$${MARIADB_USER} --password=$${MARIADB_PASSWORD} --host=localhost ping"]
+      start_period: 60s
+      start_interval: 15s
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+networks:
+  laravel-production:
