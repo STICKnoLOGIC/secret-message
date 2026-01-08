@@ -8,13 +8,13 @@ services:
     volumes:
       - ./docker/data/storage:/var/www/storage:ro
     networks:
-      - laravel-production
+      - secret-message-laravel-production
     ports:
       - "${NGINX_PORT:-9009}:80"
     depends_on:
-      php-fpm:
+      secret_message_php-fpm:
         condition: service_healthy
-  php-fpm:
+  secret_message_php-fpm:
     build:
       context: .
       dockerfile: ./docker/common/php-fpm/Dockerfile
@@ -25,17 +25,17 @@ services:
     env_file:
       - .env
     networks:
-      - laravel-production
+      - secret-message-laravel-production
     healthcheck:
       test: ["CMD-SHELL", "php-fpm-healthcheck || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 3
     depends_on:
-      mariadb:
+      secret_message_mariadb:
         condition: service_healthy
 
-  php-cli:
+  secret_message_php-cli:
     build:
       context: .
       dockerfile: ./docker/php-cli/Dockerfile
@@ -44,14 +44,14 @@ services:
     env_file:
       - .env
     networks:
-      - laravel-production
+      - secret-message-laravel-production
 
   secret_message_mariadb:
     container_name: secret_message_mariadb
     image: mariadb:11
     restart: unless-stopped
     networks:
-      - laravel-production
+      - secret-message-laravel-production
     env_file:
       - .env.db
     volumes:
@@ -66,4 +66,4 @@ services:
       retries: 3
 
 networks:
-  laravel-production:
+  secret-message-laravel-production:
