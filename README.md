@@ -36,6 +36,11 @@
 
 ---
 
+##### ads
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=sticknologic/secret-message@github)](https://gitads.dev/v1/ad-track?source=sticknologic/secret-message@github)
+
+
+
 ## What Can I Do Here?
 
 You can:
